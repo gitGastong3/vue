@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vue.js のサンプル</title>
+<script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js">
+    
+</script>
+</head>
+<body>
+  <style>
+    .red {
+      font-size: 24pt;
+      color:red;
+    }
+    .blue {
+      font-size: 24pt;
+      font-weight: bold;
+      color:blue;
+    }
+  </style>
+<h1 class="bg-primary text-white display-4 px-3">Vue3</h1>
+<div id="app" class="bg-secondary display-4 px-3 container">
+  <p v-if="isBlue" class="blue">
+    {{ message }}
+  </p>
+  <p v-else class="red">
+    少々おまちください
+  </p>
+
+</div>
+<script>
+  const appdata = {
+  data() {
+    return {
+      message: null,
+      isRed: true,
+      isBlue: false
+    }
+  },
+  mounted() {
+    this.message = 'This is sample page'
+    setInterval(() => {
+      this.isRed = !this.isRed
+      this.isBlue = !this.isBlue
+    }, 1000)
+  }
+  }
+  Vue.createApp(appdata).mount('#app')
+
+
+</script>
+</body>
+</html>
